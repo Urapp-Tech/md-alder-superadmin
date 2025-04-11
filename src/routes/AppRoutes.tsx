@@ -29,6 +29,8 @@ import SuperAdminThemePage from '../pages/super-admin/theme/SuperAdminThemePage'
 import RatingPage from '../pages/super-admin/rating/RatingPage';
 import RatingReviewsPage from '../pages/super-admin/rating/RatingReviewsPage';
 import ShopTypePage from '../pages/super-admin/shop-type/ShopTypePage';
+import DoctorPage from '../pages/super-admin/doctors/DoctorPage';
+import DoctorsCreatePage from '../pages/super-admin/doctors/DoctorsCreatePage';
 
 export const routeObjects: RouteObject[] = [
   {
@@ -256,6 +258,19 @@ export const routeObjects: RouteObject[] = [
               {
                 index: true,
                 element: <ShopTypePage />,
+              },
+            ],
+          },
+          {
+            path: 'doctor',
+            children: [
+              {
+                index: true,
+                element: <DoctorPage />,
+              },
+              {
+                path: 'create',
+                element: <DoctorsCreatePage />,
               },
             ],
           },
