@@ -6,7 +6,7 @@ export const BASE_SYSTEM_URL =
   import.meta.env.VITE_SYSTEM_BASE_URL || `${HOST}/api/v1/system/config/`;
 export const PROFILE_PREFIX = 'profile';
 export const THEME_PREFIX = 'theme';
-export const BACKOFFICE_PREFIX = 'backofficeUser';
+export const BACKOFFICE_PREFIX = 'back-office-user';
 export const PERMISSION_PREFIX = 'permission';
 export const RATING = 'rating';
 export const SHOP_TYPE = 'shop-type';
