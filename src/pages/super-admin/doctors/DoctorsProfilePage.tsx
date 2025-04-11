@@ -1,16 +1,16 @@
 import { IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import StarIcon from '@mui/icons-material/Star';
-import TopBar from '../../components/common/Md-Alder/TopBar';
+// import TopBar from '../../components/common/Md-Alder/TopBar';
 import Photo from '../../assets/images/PhotoLessRounded.png';
 import Map from '../../assets/images/map.png';
 import DoctorsDetailsCard from './profile/DoctorsDetailsCard';
-import assets from '../../assets/index';
+import assets from '../../../assets/index';
 
 const DoctorsProfilePage = () => {
   return (
     <>
-      <TopBar title="Doctor Profile" />
+      {/* <TopBar title="Doctor Profile" /> */}
       <div className="mt-10 pr-5">
         <div className="alder-content alder-doctor-profile mt-10 p-5">
           <div className="grid grid-cols-12">

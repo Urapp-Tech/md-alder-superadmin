@@ -15,8 +15,8 @@ import AddIcon from '@mui/icons-material/Add';
 import React, { useState } from 'react';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import SendIcon from '@mui/icons-material/Send';
-import TopBar from '../../components/common/Md-Alder/TopBar';
-import ChipsInput from '../../components/common/ChipsInput';
+// import TopBar from '../../components/common/Md-Alder/TopBar';
+// import ChipsInput from '../../components/common/ChipsInput';
 import SmileFace from '../../assets/images/smile-dark.png';
 import Photo from '../../assets/images/PhotoLessRounded.png';
 import DoctorsCreateSchedulePopup from './DoctorsCreateSchedulePopup';
@@ -40,7 +40,7 @@ const DoctorsEditPage = () => {
 
   return (
     <>
-      <TopBar title="Add Doctor Profile" />
+      {/* <TopBar title="Add Doctor Profile" /> */}
       <DoctorsCreateSchedulePopup
         scheduleAddPopup={scheduleAddPopup}
         setScheduleAddPopup={setScheduleAddPopup}
@@ -306,7 +306,7 @@ const DoctorsEditPage = () => {
                   </div>
                   {/* Experience */}
                   <div className="col-span-12 mb-2 px-3">
-                    <ChipsInput
+                    {/* <ChipsInput
                       name="experience"
                       maxChips={3}
                       defaultChips={[
@@ -314,16 +314,16 @@ const DoctorsEditPage = () => {
                         'MACY GENERAL HOSPITAL',
                         'MACY GENERAL HOSPITAL',
                       ]}
-                    />
+                    /> */}
                   </div>
                   <div className="col-span-12 mb-2 px-3">
-                    <ChipsInput name="skills" maxChips={3} />
+                    {/* <ChipsInput name="skills" maxChips={3} /> */}
                   </div>
                   <div className="col-span-12 mb-2 px-3">
-                    <ChipsInput name="languages" maxChips={3} />
+                    {/* <ChipsInput name="languages" maxChips={3} /> */}
                   </div>
                   <div className="col-span-12 mb-2 px-3">
-                    <ChipsInput name="social" maxChips={3} />
+                    {/* <ChipsInput name="social" maxChips={3} /> */}
                   </div>
                   <div className="col-span-12 px-3">
                     <FormGroup>

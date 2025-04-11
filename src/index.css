@@ -326,7 +326,7 @@ table > tbody > tr:last-child {
 }
 
 .title {
-  @apply flex text-2xl font-semibold text-secondary;
+  @apply flex text-2xl font-semibold text-black;
 }
 
 .header-user-box {
