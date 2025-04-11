@@ -191,6 +191,8 @@ function SuperAdminEditRolePermissionsPage() {
               <FormControl className="FormControl my-5" variant="standard">
                 <label className="pb-2 font-bold">Description</label>
                 <TextareaAutosize
+                  onPointerEnterCapture={undefined}
+                  onPointerLeaveCapture={undefined}
                   minRows={3}
                   maxRows={6}
                   {...register('roleDescription', {

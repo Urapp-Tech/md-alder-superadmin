@@ -28,14 +28,14 @@ function App() {
           dispatch(setTheme(res.data.data.value.themeColor));
         } else {
           setIsPageLoader(false);
-          navigate('./admin/auth/404', { replace: true });
+          navigate('./superadmin/auth/404', { replace: true });
           // showNotification(res.data.message, 'error');
           // console.log('404 page');
         }
       })
       .catch(() => {
         setIsPageLoader(false);
-        navigate('./admin/auth/404', { replace: true });
+        navigate('./superadmin/auth/404', { replace: true });
         // showNotification(err.message, 'error');
       });
   }, []);

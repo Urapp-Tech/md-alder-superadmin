@@ -57,6 +57,7 @@ import forgotBg from './images/forgot-bg.png';
 import envelopeMsg from './images/envelope-msg.png';
 import otpMSg from './images/otp-msg.png';
 import keyIcon from './images/keyIcon.png';
+import superadminLogo from './images/superadmin-logo.png';
 
 const assets = {
   images: {
@@ -104,6 +105,7 @@ const assets = {
     envelopeMsg,
     otpMSg,
     keyIcon,
+    superadminLogo,
   },
   tempImages: {
     wash,

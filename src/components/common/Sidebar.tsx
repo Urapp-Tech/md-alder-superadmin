@@ -15,7 +15,7 @@ import { NavLink } from 'react-router-dom';
 // import HeadphonesOutlinedIcon from '@mui/icons-material/HeadphonesOutlined'
 import CollectionsOutlinedIcon from '@mui/icons-material/CollectionsOutlined';
 import CalendarViewWeekOutlinedIcon from '@mui/icons-material/CalendarViewWeekOutlined';
-// import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
+import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import assets from '../../assets';
 import { useAppSelector } from '../../redux/redux-hooks';
 import { defineRules } from '../../services/permissions/permissions';
@@ -38,6 +38,11 @@ const superAdminlinks = [
     name: 'App Image',
     path: 'app/image-upload',
     icon: <CollectionsOutlinedIcon fontSize="inherit" />,
+  },
+  {
+    name: 'Doctor',
+    path: 'doctor',
+    icon: <GroupsOutlinedIcon fontSize="inherit" />,
   },
   // {
   //   name: 'Shops',
@@ -224,38 +229,18 @@ function Sidebar() {
     >
       <List disablePadding>
         <Toolbar
-          className={
-            userData?.tenantConfig?.logo || userData.isSuperAdmin === true
-              ? 'mb-10'
-              : 'my-3'
-          }
+          className={userData?.userType === 'SUPER_USER' ? 'mb-10' : 'my-3'}
         >
           <Stack
             className="h-[100%] w-full pl-4"
             direction="row"
             justifyContent="left"
           >
-            {userData?.isSuperAdmin ? (
-              <img
-                className="mt-9 h-[29px] max-w-[150px]"
-                src={assets.images.urApplogoWhite}
-                alt=""
-              />
-            ) : logo ? (
-              <img
-                className="mt-9 h-[29px] max-w-[150px]"
-                src={logo}
-                alt="logo"
-              />
-            ) : (
-              <div className="flex w-full items-center justify-start rounded-2xl p-3 text-white">
-                <img
-                  className="mt-2 max-w-[150px]"
-                  src={assets.images.urApplogoWhite}
-                  alt="logo"
-                />
-              </div>
-            )}
+            <img
+              className="mt-9 h-[29px] max-w-[150px]"
+              src={assets.images.superadminLogo}
+              alt=""
+            />
           </Stack>
         </Toolbar>
 

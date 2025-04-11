@@ -33,10 +33,10 @@ import ShopTypePage from '../pages/super-admin/shop-type/ShopTypePage';
 export const routeObjects: RouteObject[] = [
   {
     index: true,
-    element: <Navigate to="admin" replace />,
+    element: <Navigate to="superadmin" replace />,
   },
   {
-    path: '/admin',
+    path: '/superadmin',
     element: <LayoutOutlet />,
     children: [
       {
