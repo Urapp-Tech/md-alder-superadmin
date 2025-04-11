@@ -386,6 +386,8 @@ const DoctorsCreatePage = () => {
                     <FormGroup>
                       <FormControl variant="outlined" fullWidth>
                         <TextareaAutosize
+                          onPointerEnterCapture={undefined}
+                          onPointerLeaveCapture={undefined}
                           className="alder-form-control"
                           placeholder="Bio"
                           name="bio"
