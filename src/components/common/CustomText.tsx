@@ -8,9 +8,9 @@ function CustomText({ text, noroundedborders }: Props) {
     <div
       className={`flex w-full items-center justify-center ${
         !noroundedborders && 'rounded-lg'
-      } mt-5 bg-gray-200 py-5`}
+      } mt-5 bg-faded py-5`}
     >
-      <p className="font-open-sans font-semibold text-secondary">{text}</p>
+      <p className="font-open-sans font-semibold text-secondary2">{text}</p>
     </div>
   );
 }

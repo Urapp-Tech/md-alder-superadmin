@@ -24,6 +24,7 @@ function DoctorsCreateSchedulePopup({
         className: 'Dialog',
         style: {
           maxWidth: '100%',
+          minWidth: '965px',
           maxHeight: 'auto',
         },
       }}

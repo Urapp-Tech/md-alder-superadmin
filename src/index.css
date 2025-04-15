@@ -98,7 +98,7 @@ select {
 }
 
 .form-group input {
-  @apply rounded-xl border-none bg-[#fff] px-4 py-1.5 font-open-sans text-sm font-normal text-secondary opacity-70 !important;
+  @apply rounded-xl border-none bg-[#fff] px-4 py-1.5 font-open-sans text-sm font-normal text-secondary2 opacity-70 !important;
 }
 
 .form-group .MuiFormControl-root {
@@ -119,12 +119,12 @@ table {
 
 table > thead > tr > td,
 table > thead > tr > th {
-  @apply py-5 pl-4 pr-1 text-left font-open-sans text-xs font-normal text-secondary;
+  @apply py-5 pl-4 pr-1 text-left font-open-sans text-xs font-normal text-secondary2;
 }
 
 table > tbody > tr > td,
 table > tbody > tr > th {
-  @apply py-5 pl-4 pr-1 text-left font-open-sans text-xs font-normal text-secondary;
+  @apply py-5 pl-4 pr-1 text-left font-open-sans text-xs font-normal text-secondary2;
 }
 
 table > tbody > tr:nth-child(odd) {
@@ -150,7 +150,7 @@ table .avatar img {
 }
 
 table.table-border > thead > tr > th {
-  @apply border-b-2 border-solid border-faded font-open-sans text-sm font-semibold text-secondary;
+  @apply border-b-2 border-solid border-faded font-open-sans text-sm font-semibold text-secondary2;
   border-bottom: 1.5px solid #dfe0eb !important;
 }
 
@@ -350,7 +350,7 @@ table > tbody > tr:last-child {
 }
 
 .icon-btn {
-  @apply font-open-sans text-sm font-semibold text-secondary outline-none;
+  @apply font-open-sans text-sm font-semibold text-secondary2 outline-none;
   outline: none !important;
 }
 
@@ -438,11 +438,11 @@ table > tbody > tr:last-child {
 }
 
 .btn-black-outline {
-  @apply rounded-lg border border-solid border-secondary bg-transparent px-3 text-sm font-normal capitalize text-secondary shadow-none !important;
+  @apply rounded-lg border border-solid border-secondary2 bg-transparent px-3 text-sm font-normal capitalize text-secondary shadow-none !important;
 }
 
 .btn-black-fill {
-  @apply rounded-lg border border-solid border-secondary bg-[#1D1D1D] px-4 text-sm font-normal capitalize text-[#FFFFFF] shadow-none !important;
+  @apply rounded-lg border border-solid border-secondary bg-background px-4 text-sm font-normal capitalize text-[#FFFFFF] shadow-none !important;
 }
 
 .btn-gray-fill {
@@ -1557,10 +1557,10 @@ main {
 }
 .btn-black-fill,
 .btn-gray-fill {
-  @apply border-primary bg-primary text-foreground !important;
+  @apply border-primary bg-background text-foreground !important;
 }
 .btn-black-outline {
-  @apply border-primary text-primary opacity-[1] !important;
+  @apply border-background text-secondary2 opacity-[1] !important;
 }
 
 .bg-ord-del {
@@ -1734,4 +1734,8 @@ MD - AlDer Theme Styles
 }
 .MuiButtonBase-root.MuiPickersDay-root.Mui-selected {
   @apply bg-primary;
+}
+
+.css-1nrlq1o-MuiFormControl-root {
+  width: 100% !important;
 }

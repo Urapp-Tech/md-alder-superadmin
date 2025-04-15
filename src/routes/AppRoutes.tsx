@@ -272,6 +272,10 @@ export const routeObjects: RouteObject[] = [
                 path: 'create',
                 element: <DoctorsCreatePage />,
               },
+              {
+                path: 'edit/:id',
+                element: <DoctorsCreatePage />,
+              },
             ],
           },
         ],

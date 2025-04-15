@@ -3,6 +3,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import appStateReducer from './features/appStateSlice';
 import authStateReducer from './features/authStateSlice';
+import shopScheduleStateSliceReducer from './features/shopScheduleStateSlice';
 
 const persistConfig = {
   key: 'root',
@@ -24,6 +25,7 @@ export const store = configureStore({
     // ),
     // appState: persistReducer<any, any>(persistConfig, appStateReducer),
     authState: authStateReducer,
+    scheduleState: shopScheduleStateSliceReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

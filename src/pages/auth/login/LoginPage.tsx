@@ -46,8 +46,8 @@ function LoginPage() {
         if (user && user.data.success) {
           const newUserData = user.data.data;
           setIsLoader(false);
-          setItem('AUTH_TOKEN', newUserData.accessToken);
-          setItem('REFRESH_TOKEN', newUserData.refreshToken);
+          setItem('AUTH_TOKEN', newUserData.token);
+          setItem('REFRESH_TOKEN', newUserData.token);
           dispatch(login(newUserData));
           dispatch(setItemState(newUserData));
           navigate('../../../main');
@@ -67,7 +67,7 @@ function LoginPage() {
       <div className="flex h-full w-full items-center justify-center bg-[#F0F0F0]">
         <div className="h-full w-[40%] px-[30px]">
           <div className="w-full max-w-[200px] px-[25px] py-[40px]">
-            <img src={assets.images.urApplogo} alt="urlaundry" />
+            <img src={assets.images.mdaiderlogo} alt="urlaundry" />
           </div>
           <div className="pt-[150px]">
             <h1 className="mb-4 text-center text-[36px] font-bold capitalize leading-[normal] text-black">
@@ -131,7 +131,7 @@ function LoginPage() {
               <div className="mt-8 w-full px-4">
                 <Button
                   disabled={!!isLoader}
-                  className="w-full bg-neutral-900 px-16 py-2 text-gray-50"
+                  className="w-full bg-[#3800F1] px-16 py-2 text-gray-50"
                   variant="contained"
                   color="inherit"
                   title="Login"

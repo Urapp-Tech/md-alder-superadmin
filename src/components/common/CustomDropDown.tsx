@@ -1,10 +1,12 @@
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { Controller } from 'react-hook-form';
+import ErrorSpanBox from './ErrorSpanBox';
 
-type Props = {
-  inputTitle: string;
+type CustomDropDownProps = {
+  inputTitle?: string;
   customWidth?: string;
+  customHeight?: string;
   options?: any;
   register?: any;
   control?: any;
@@ -24,6 +26,7 @@ function CustomDropDown({
   disabled,
   inputTitle,
   customWidth,
+  customHeight,
   options,
   control,
   id,
@@ -33,19 +36,22 @@ function CustomDropDown({
   setValue,
   alternativeId,
   border,
-}: Props) {
+}: CustomDropDownProps) {
+  // console.log('🚀 ~ options:', options);
   return (
     <div className="">
-      <div className="" style={{ paddingBottom: '5px', display: 'flex' }}>
-        <span className={`FormLabel ${customClassInputTitle}`}>
-          {inputTitle}
-        </span>
-      </div>
+      {inputTitle && (
+        <div className="" style={{ paddingBottom: '5px', display: 'flex' }}>
+          <span className={`FormLabel ${customClassInputTitle}`}>
+            {inputTitle}
+          </span>
+        </div>
+      )}
       <div className="">
         <Controller
           name={id}
           control={control}
-          defaultValue={options?.role || 'none'}
+          defaultValue={options?.role ? options?.role : 'none'}
           rules={
             validateRequired
               ? {
@@ -56,7 +62,7 @@ function CustomDropDown({
               : {}
           }
           render={({ field, fieldState }) => (
-            <>
+            <div>
               <Select
                 disabled={disabled}
                 fullWidth
@@ -64,12 +70,14 @@ function CustomDropDown({
                 style={{
                   border: border || '1px solid',
                 }}
-                className={`fixed-height ${customWidth || 'w-[100%]'}`}
+                className={`${customHeight || 'fixed-height'} ${
+                  customWidth || 'w-[100%]'
+                }`}
                 labelId="demo-simple-select-label"
                 id={id}
                 {...field}
                 onChange={(event) => {
-                  alternativeId && setValue(alternativeId, []);
+                  if (alternativeId) setValue(alternativeId, []);
                   field.onChange(event);
                 }}
               >
@@ -83,11 +91,15 @@ function CustomDropDown({
                 ))}
               </Select>
               {fieldState.error && (
-                <p style={{ color: 'red', fontSize: '12px' }}>
-                  *{fieldState.error.message}
-                </p>
+                <ErrorSpanBox
+                  error={`${
+                    fieldState.error.message
+                      ? `${fieldState.error.message}`
+                      : ''
+                  }`}
+                />
               )}
-            </>
+            </div>
           )}
         />
       </div>

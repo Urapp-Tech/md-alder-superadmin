@@ -65,7 +65,7 @@
 .Content .FormInput input::placeholder,
 .Content .FormTextarea textarea::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  @apply font-open-sans text-sm font-normal text-secondary opacity-[0.7] !important;
+  @apply font-open-sans text-sm font-normal text-secondary2 opacity-[0.7] !important;
 }
 
 .Content .FormInput input:-ms-input-placeholder,
@@ -85,7 +85,7 @@
 }
 
 .Content .Title {
-  @apply font-open-sans text-xl font-semibold text-secondary !important;
+  @apply font-open-sans text-xl font-semibold text-secondary2 !important;
 }
 
 .Content .FormBody {
@@ -113,7 +113,7 @@
 }
 
 .Content .FormLabel {
-  @apply font-open-sans text-sm font-normal text-secondary !important;
+  @apply font-open-sans text-sm font-normal text-secondary2 !important;
 }
 
 .Content .FormLabel .SubLabel {
@@ -123,13 +123,13 @@
 .Content .FormInput,
 .Content .FormTextarea,
 .Content .FormSelect {
-  @apply mt-1 rounded-md border border-solid border-secondary px-3 font-open-sans text-sm font-normal text-secondary opacity-[0.7] !important;
+  @apply mt-1 rounded-md border border-solid border-secondary2 px-3 font-open-sans text-sm font-normal text-secondary2 opacity-[0.7] !important;
 }
 
 .Content .FormInput:after,
 .Content .FormTextarea:after,
 .Content .FormSelect:after {
-  @apply border-b-secondary !important;
+  @apply border-b-secondary2 !important;
 }
 
 .Content .ImageBox {
@@ -153,7 +153,7 @@
 }
 
 .Content .ShowImageLabel {
-  @apply mr-4 font-open-sans text-xs font-normal text-secondary !important;
+  @apply mr-4 font-open-sans text-xs font-normal text-secondary2 !important;
 }
 
 .Content .FormFooter {
@@ -185,7 +185,7 @@
 }
 
 .Chat .HeaderHeading {
-  @apply font-open-sans text-xl font-semibold text-secondary !important;
+  @apply font-open-sans text-xl font-semibold text-secondary2 !important;
 }
 
 .Chat .HeaderCurrentTxt {
@@ -233,7 +233,7 @@
 }
 
 .Chat .HeaderHeading {
-  @apply font-open-sans text-xl font-semibold text-secondary !important;
+  @apply font-open-sans text-xl font-semibold text-secondary2 !important;
 }
 
 .Chat .HeaderCurrentTxt {
@@ -269,15 +269,15 @@
 }
 
 .ChatDetails {
-  @apply mt-4 border border-solid border-foreground py-3 px-3 shadow-md !important;
+  @apply mt-4 border border-solid border-foreground px-3 py-3 shadow-md !important;
 }
 
 .ChatLeftBox .ChatDetails {
-  @apply rounded-tl-lg rounded-tr-lg rounded-br-lg !important;
+  @apply rounded-br-lg rounded-tl-lg rounded-tr-lg !important;
 }
 
 .ChatRightBox .ChatDetails {
-  @apply rounded-tl-lg rounded-tr-lg rounded-bl-lg bg-[#1D1D1D] !important;
+  @apply rounded-bl-lg rounded-tl-lg rounded-tr-lg bg-[#1D1D1D] !important;
 }
 
 .ChatContent .ChatTxt {
@@ -285,7 +285,7 @@
 }
 
 .ChatLeftBox .ChatTxt {
-  @apply text-secondary !important;
+  @apply text-secondary2 !important;
 }
 
 .ChatRightBox .ChatTxt {
@@ -385,15 +385,15 @@
 }
 
 .FormControl .DatePicker {
-  @apply mt-1 rounded-md border border-solid border-secondary px-3 font-open-sans text-sm font-normal text-secondary opacity-[0.7] !important;
+  @apply mt-1 rounded-md border border-solid border-secondary2 px-3 font-open-sans text-sm font-normal text-secondary2 opacity-[0.7] !important;
 }
 
 .FormControl .DatePicker:after {
-  @apply border-b-secondary !important;
+  @apply border-b-secondary2 !important;
 }
 
 .FormControl .DatePicker input {
-  @apply py-[4px] px-0 font-open-sans text-sm font-normal text-secondary opacity-[0.7] !important;
+  @apply px-0 py-[4px] font-open-sans text-sm font-normal text-secondary2 opacity-[0.7] !important;
 }
 
 .FormControl .DatePicker button {

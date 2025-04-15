@@ -94,7 +94,7 @@ function TopBar({ title, isNestedRoute = false }: Props) {
               className="header-user-box ml-3.5 cursor-pointer"
               onClick={() => setProfileToggler(!profileToggler)}
             >
-              <span>{`${userData.firstName} ${userData.lastName}`}</span>
+              <span className="text-secondary2">{`${userData.firstName} ${userData.lastName}`}</span>
               {ProfileAvatar ? (
                 <Avatar
                   sx={{ width: 56, height: 56 }}
@@ -109,6 +109,7 @@ function TopBar({ title, isNestedRoute = false }: Props) {
                 />
               ) : (
                 <Avatar
+                  className="bg-background"
                   sx={{ bgcolor: 'black', fontSize: '18px' }}
                 >{`${userData.firstName?.charAt(0)}${userData.lastName?.charAt(
                   0

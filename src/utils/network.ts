@@ -1,6 +1,8 @@
+/* eslint-disable import/no-cycle */
 import axios from 'axios';
-import { setLogo, setRemoveItemState } from '../redux/features/appStateSlice';
+// import { setLogo, setRemoveItemState } from '../redux/features/appSlice';
 import { logout } from '../redux/features/authStateSlice';
+// import { setRolePermissions } from '../redux/features/permissionsStateSlice';
 import { store } from '../redux/store';
 import { BASE_SYSTEM_URL, BASE_URL } from './constants';
 import { getItem, setItem } from './storage';
@@ -10,8 +12,9 @@ const refreshToken = () => getItem<string>('REFRESH_TOKEN');
 
 const setLogout = () => {
   store.dispatch(logout());
-  store.dispatch(setLogo(null));
-  store.dispatch(setRemoveItemState());
+  // store.dispatch(setRemoveItemState());
+  // store.dispatch(setLogo(null));
+  // store.dispatch(setRolePermissions({ id: '', name: '', permissions: [] }));
 };
 
 const networkInstance = axios.create();
@@ -56,6 +59,7 @@ networkInstance.interceptors.request.use(
 
 networkInstance.interceptors.response.use(
   function onResponse(response) {
+    setItem('LAST_ACTIVITY', Date.now());
     return response;
   },
   function onError(error) {
@@ -95,12 +99,12 @@ networkInstance.interceptors.response.use(
           }
         );
     }
-    // if (error.response.status === 403) {
-    //   setLogout();
-    // }
+    if (error.response.status === 403) {
+      setLogout();
+    }
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
-    setLogout();
+    // setLogout();
     return Promise.reject(error);
   }
 );
@@ -114,12 +118,22 @@ const post = <T = any>(endPoint: string, data: T) => {
   });
 };
 
-const get = (endPoint: string) => {
+const patch = <T = any>(endPoint: string, data: T) => {
+  return networkInstance.patch(`${BASE_URL}${endPoint}`, data, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token(),
+    },
+  });
+};
+
+const get = (endPoint: string, body?: any) => {
   return networkInstance.get(`${BASE_URL}${endPoint}`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: token(),
     },
+    params: body,
   });
 };
 
@@ -177,6 +191,7 @@ const getWithQueryParam = (
 
 export default {
   post,
+  patch,
   get,
   postMultipart,
   getSystemConfig,

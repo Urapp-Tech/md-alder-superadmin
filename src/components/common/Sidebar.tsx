@@ -34,11 +34,11 @@ const superAdminlinks = [
     path: 'dashboard',
     icon: <GridViewOutlinedIcon fontSize="inherit" />,
   },
-  {
-    name: 'App Image',
-    path: 'app/image-upload',
-    icon: <CollectionsOutlinedIcon fontSize="inherit" />,
-  },
+  // {
+  //   name: 'App Image',
+  //   path: 'app/image-upload',
+  //   icon: <CollectionsOutlinedIcon fontSize="inherit" />,
+  // },
   {
     name: 'Doctor',
     path: 'doctor',
@@ -71,23 +71,23 @@ const superAdminlinks = [
   //     },
   //   ],
   // },
-  {
-    name: 'Shops',
-    path: 'tenant',
-    icon: <ShopIcon />,
-    childLinks: [
-      {
-        name: 'Type',
-        path: 'tenant/type',
-        icon: <CalendarViewWeekOutlinedIcon />,
-      },
-      {
-        name: 'Vendors',
-        path: 'tenant/shops',
-        icon: <ShopIcon />,
-      },
-    ],
-  },
+  // {
+  //   name: 'Shops',
+  //   path: 'tenant',
+  //   icon: <ShopIcon />,
+  //   childLinks: [
+  //     {
+  //       name: 'Type',
+  //       path: 'tenant/type',
+  //       icon: <CalendarViewWeekOutlinedIcon />,
+  //     },
+  //     {
+  //       name: 'Vendors',
+  //       path: 'tenant/shops',
+  //       icon: <ShopIcon />,
+  //     },
+  //   ],
+  // },
   {
     name: 'user permissions',
     path: 'role',
@@ -105,11 +105,11 @@ const superAdminlinks = [
       },
     ],
   },
-  {
-    name: 'Theme',
-    path: 'theme-configuration',
-    icon: <ServiceIcon />,
-  },
+  // {
+  //   name: 'Theme',
+  //   path: 'theme-configuration',
+  //   icon: <ServiceIcon />,
+  // },
 ];
 
 function Sidebar() {
