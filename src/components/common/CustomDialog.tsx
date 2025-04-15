@@ -172,17 +172,18 @@ function CustomDialog({
                             )}
                           </FormControl>
                         </div>
-                      ) : items.type === 'datepicker' ? (
-                        <TimePicker
-                          timePickerLabel={items.fieldName}
-                          timePickerSubLabel={items.placeholder}
-                          timePickerValue={items.time}
-                          setTimePickerValue={items.setTime}
-                          id={items.id}
-                          errors={items.error}
-                          // setError={setError}
-                        />
-                      ) : null
+                      ) : // ) : items.type === 'datepicker' ? (
+                      //   <TimePicker
+                      //     timePickerLabel={items.fieldName}
+                      //     timePickerSubLabel={items.placeholder}
+                      //     timePickerValue={items.time}
+                      //     setTimePickerValue={items.setTime}
+                      //     id={items.id}
+                      //     errors={items.error}
+                      //     // setError={setError}
+                      //   />
+                      // )
+                      null
                     }
                     {items.id === 'upload' && (
                       <>
