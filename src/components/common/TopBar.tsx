@@ -144,7 +144,7 @@ function TopBar({ title, isNestedRoute = false }: Props) {
             >
               <NavLink
                 className="logout-link w-full"
-                to="/admin"
+                to="/superadmin"
                 onClick={() => logOut()}
               >
                 <LogoutOutlinedIcon className="w-4" />

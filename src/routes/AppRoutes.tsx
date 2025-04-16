@@ -31,6 +31,7 @@ import RatingReviewsPage from '../pages/super-admin/rating/RatingReviewsPage';
 import ShopTypePage from '../pages/super-admin/shop-type/ShopTypePage';
 import DoctorPage from '../pages/super-admin/doctors/DoctorPage';
 import DoctorsCreatePage from '../pages/super-admin/doctors/DoctorsCreatePage';
+import DoctorsEditPage from '../pages/super-admin/doctors/DoctorsEditPage';
 
 export const routeObjects: RouteObject[] = [
   {
@@ -274,7 +275,7 @@ export const routeObjects: RouteObject[] = [
               },
               {
                 path: 'edit/:id',
-                element: <DoctorsCreatePage />,
+                element: <DoctorsEditPage />,
               },
             ],
           },

@@ -10,6 +10,7 @@ import TablePagination from '@mui/material/TablePagination';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import dayjs from 'dayjs';
 import React, { useEffect, useState } from 'react';
+import EditIcon from '@mui/icons-material/Edit';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
@@ -21,9 +22,12 @@ import Loader from '../../../components/common/Loader';
 import Notify from '../../../components/common/Notify';
 // import { useAppSelector } from '../../../redux/redux-hooks';
 import Service from '../../../services/superadmin/doctor';
+import { setWordDays } from '../../../redux/features/shopScheduleStateSlice';
+import { useAppDispatch } from '../../../redux/redux-hooks';
 
 function DoctorPage() {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   // const authState: any = useAppSelector((state: any) => state?.authState);
   const [search, setSearch] = useState<any>('');
   const [page, setPage] = useState(0);
@@ -176,7 +180,10 @@ function DoctorPage() {
                 <Button
                   variant="contained"
                   className="btn-black-fill btn-icon flex w-[50%] items-center"
-                  onClick={() => navigate('./create')}
+                  onClick={() => {
+                    dispatch(setWordDays([]));
+                    navigate('./create');
+                  }}
                 >
                   <AddOutlinedIcon /> <span className="text-xs">Add New</span>
                 </Button>
@@ -248,11 +255,21 @@ function DoctorPage() {
                         </td>
                         <td>
                           <div className="flex flex-row-reverse">
-                            <IconButton
+                            {/* <IconButton
                               className="icon-btn"
                               onClick={() => navigate(`../reviews/${item.id}`)}
                             >
                               <WysiwygOutlinedIcon />
+                            </IconButton> */}
+                            <IconButton
+                              className="icon-btn"
+                              onClick={() =>
+                                navigate(`./edit/${item.id}`, {
+                                  state: item,
+                                })
+                              }
+                            >
+                              <EditIcon />
                             </IconButton>
                           </div>
                         </td>

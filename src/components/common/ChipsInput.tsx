@@ -71,7 +71,7 @@ const ChipsInput: React.FC<ExperienceChipsInputProps> = ({
         </FormControl>
       </FormGroup>
       <div className="mt-2">
-        {chips.map((chip, index) => (
+        {chips?.map((chip, index) => (
           <Chip
             key={index}
             label={chip}

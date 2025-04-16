@@ -10,7 +10,12 @@ const create = (data: any) => {
   return network.postMultipart(`${DOC_PREFIX}/create`, data);
 };
 
+const update = (id: any, data: any) => {
+  return network.postMultipart(`${DOC_PREFIX}/update/${id}`, data);
+};
+
 export default {
   list,
   create,
+  update,
 };

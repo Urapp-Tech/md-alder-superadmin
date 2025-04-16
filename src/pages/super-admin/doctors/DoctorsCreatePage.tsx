@@ -21,6 +21,7 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import SendIcon from '@mui/icons-material/Send';
 // import TopBar from '../../components/common/Md-Alder/TopBar';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 import SmileFace from '../../../assets/images/smile-dark.png';
 import ChipsInput from '../../../components/common/ChipsInput';
 import service from '../../../services/superadmin/doctor';
@@ -43,6 +44,7 @@ import { useAppSelector } from '../../../redux/redux-hooks';
 
 const DoctorsCreatePage = () => {
   const { showMessage } = useSnackbar();
+  const navigate = useNavigate();
   const [scheduleAddPopup, setScheduleAddPopup] = useState(false);
   const [imagePreview, setImagePreview] = useState<string | undefined | null>(
     null
@@ -102,20 +104,8 @@ const DoctorsCreatePage = () => {
     setImage(null);
   };
 
-  console.log('error', errors);
-
-  const safeAppendJson = (formData: FormData, key: string, value: any) => {
-    if (
-      value !== undefined &&
-      value !== null &&
-      Array.isArray(value) &&
-      value.length > 0
-    ) {
-      formData.append(key, JSON.stringify(value));
-    }
-  };
   const onSubmitHandler = (data: Doctor) => {
-    console.log('data', data.experience);
+    // console.log('data', data.experience);
     setIsLoader(true);
     const formData = new FormData();
 
@@ -165,6 +155,7 @@ const DoctorsCreatePage = () => {
         if (item.data.success) {
           showMessage(item.data.message, 'success');
           setIsLoader(false);
+          navigate(-1);
         } else {
           showMessage(item.data.message, 'error');
           setIsLoader(false);

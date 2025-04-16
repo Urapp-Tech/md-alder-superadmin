@@ -311,20 +311,20 @@ function WorkDaysForm({
             </tr>
           </thead>
           <tbody>
-            {workDays.map((d, index) => {
+            {workDays?.map((d, index) => {
               return (
                 <tr key={d.day}>
                   <th>{d.day}</th>
                   <td>
                     {' '}
                     {dayjs(d.openTime).isValid()
-                      ? d.openTime?.format('h:mm A')
+                      ? d?.openTime?.format('h:mm A')
                       : '--'}{' '}
                   </td>
                   <td>
                     {' '}
                     {dayjs(d.closeTime).isValid()
-                      ? d.closeTime?.format('h:mm A')
+                      ? d?.closeTime?.format('h:mm A')
                       : '--'}{' '}
                   </td>
                   {/* <td>
