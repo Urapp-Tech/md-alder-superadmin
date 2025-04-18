@@ -14,23 +14,23 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CustomText from '../../../components/common/CustomText';
 import Loader from '../../../components/common/Loader';
-import Notify from '../../../components/common/Notify';
 import TopBar from '../../../components/common/TopBar';
 import { useAppSelector } from '../../../redux/redux-hooks';
 import Service from '../../../services/superadmin/RolePermissions';
 import { TEXT_STORE_KEY, setText } from '../../../utils/constants';
+import { useSnackbar } from '../../../components/hooks/useSnackbar';
 
 function SuperAdminRolePermissionsPage() {
   const authState: any = useAppSelector((state) => state?.authState);
   const navigate = useNavigate();
+  const { showMessage } = useSnackbar();
+
   const [search, setSearch] = useState('');
   const [page, setPage] = useState(0);
   const [total, setTotal] = useState(0);
   const [list, setList] = useState<any>();
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [isLoader, setIsLoader] = React.useState(false);
-  const [isNotify, setIsNotify] = React.useState(false);
-  const [notifyMessage, setNotifyMessage] = React.useState({});
   const [emptyVariable] = useState(null);
 
   const handleFormClickOpen = () => {
@@ -38,15 +38,20 @@ function SuperAdminRolePermissionsPage() {
   };
 
   const handleClickSearch = (event: any) => {
-    // console.log('evenet', event);
-    const searchTxt = event.target.value as string;
-    const newPage = 0;
-    setSearch(searchTxt);
-    setPage(newPage);
-    Service.roleSearchService(searchTxt, newPage, rowsPerPage).then((item) => {
-      setList(item.data.data.list);
-      // setTotal(item.data.data.total);
-    });
+    if (event.key === 'Enter') {
+      const searchTxt = event.target.value as string;
+      const newPage = 0;
+      setSearch(searchTxt);
+      setPage(newPage);
+      Service.getListService({
+        search: searchTxt,
+        page: newPage,
+        size: rowsPerPage,
+      }).then((item) => {
+        setList(item.data.data.list);
+        setTotal(item.data.data.total);
+      });
+    }
   };
 
   const handleChangePage = (
@@ -54,19 +59,12 @@ function SuperAdminRolePermissionsPage() {
     newPage: number
   ) => {
     setPage(newPage);
-    // offset? ,limit rowsperpage hoga ofset page * rowsperPage
-    if (search === '' || search === null || search === undefined) {
-      Service.getListService(newPage, rowsPerPage).then((item) => {
+    Service.getListService({ search, page: newPage, size: rowsPerPage }).then(
+      (item) => {
         setList(item.data.data.list);
         setTotal(item.data.data.total);
-      });
-    } else {
-      // console.log('search functionality here');
-      Service.roleSearchService(search, newPage, rowsPerPage).then((item) => {
-        setList(item.data.data.list);
-        setTotal(item.data.data.total);
-      });
-    }
+      }
+    );
   };
 
   const handleChangeRowsPerPage = (
@@ -76,32 +74,22 @@ function SuperAdminRolePermissionsPage() {
     const newPage = 0;
     setRowsPerPage(newRowperPage);
     setPage(newPage);
-    if (search === '' || search === null || search === undefined) {
-      Service.getListService(newPage, rowsPerPage).then((item) => {
+    Service.getListService({ search, page: newPage, size: newRowperPage }).then(
+      (item) => {
         setList(item.data.data.list);
         setTotal(item.data.data.total);
-      });
-    } else {
-      // console.log('serach functionality here');
-      Service.roleSearchService(search, newPage, rowsPerPage).then((item) => {
-        setList(item.data.data.list);
-        setTotal(item.data.data.total);
-      });
-    }
+      }
+    );
   };
 
   useEffect(() => {
     if (TEXT_STORE_KEY) {
-      setIsNotify(true);
-      setNotifyMessage({
-        text: TEXT_STORE_KEY,
-        type: 'success',
-      });
+      showMessage(TEXT_STORE_KEY, 'success');
       setText('');
     } else {
       setIsLoader(true);
     }
-    Service.getListService(page, rowsPerPage)
+    Service.getListService({ search, page, size: rowsPerPage })
       .then((item: any) => {
         if (item.data.success) {
           // console.log("DAATA", item.data.data);
@@ -112,11 +100,7 @@ function SuperAdminRolePermissionsPage() {
       })
       .catch((error) => {
         setIsLoader(false);
-        setIsNotify(true);
-        setNotifyMessage({
-          text: error.message,
-          type: 'success',
-        });
+        showMessage(error.message, 'error');
         // console.log('error::::::::', error);
       });
   }, [emptyVariable]);
@@ -148,11 +132,6 @@ function SuperAdminRolePermissionsPage() {
     <Loader />
   ) : (
     <div>
-      <Notify
-        isOpen={isNotify}
-        setIsOpen={setIsNotify}
-        displayMessage={notifyMessage}
-      />
       <TopBar title="Role Permissions" />
       <div className="container m-auto">
         <div className="mt-5 w-full rounded-lg bg-white shadow-lg">
@@ -196,7 +175,7 @@ function SuperAdminRolePermissionsPage() {
                 </FormControl>
                 <Button
                   variant="contained"
-                  className="btn-black-fill btn-icon"
+                  className="btn-black-fill btn-icon w-[50%]"
                   onClick={handleFormClickOpen}
                 >
                   <AddOutlinedIcon /> Add Role
@@ -252,13 +231,13 @@ function SuperAdminRolePermissionsPage() {
                             >
                               <EditIcon />
                             </IconButton>
-                            <Switch
+                            {/* <Switch
                               checked={item.isActive}
                               onChange={(
                                 event: React.ChangeEvent<HTMLInputElement>
                               ) => handleSwitchChange(event, list[index].id)}
                               inputProps={{ 'aria-label': 'controlled' }}
-                            />
+                            /> */}
                           </div>
                         </td>
                       </tr>

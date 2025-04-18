@@ -3,8 +3,8 @@ import network from '../../utils/network';
 
 const PERMISSION_PREFIX = 'permission';
 
-const getListService = (page: number, size: number) => {
-  return network.get(`${ROLE_PREFIX}/list/${page}/${size}`);
+const getListService = (qp: any) => {
+  return network.get(`${ROLE_PREFIX}/list`, qp);
 };
 
 const roleSearchService = (search: string, page: number, size: number) => {
@@ -29,6 +29,10 @@ const update = (id: any, data: any) => {
 
 const updateStatus = (id: string, data: any) => {
   return network.post(`${ROLE_PREFIX}/update/status/${id}`, data);
+};
+
+const roleLov = () => {
+  return network.get(`${ROLE_PREFIX}/lov`);
 };
 
 const createPermissionService = (data: any) => {
@@ -86,6 +90,7 @@ export default {
   create,
   update,
   updateStatus,
+  roleLov,
   createPermissionService,
   updatePermissionService,
   getRolePermissionById,

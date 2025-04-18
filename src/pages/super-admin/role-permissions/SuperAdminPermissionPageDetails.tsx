@@ -31,27 +31,19 @@ function SuperAdminPermissionPageDetails() {
   const [notifyMessage, setNotifyMessage] = React.useState({});
 
   const handleClickSearch = (event: any) => {
-    setSearch(event.target.value);
-  };
-
-  const executeQuery = () => {
-    Service.getChildSearchPermissionListService(id, page, rowsPerPage, search)
-      .then((item) => {
+    if (event.key === 'Enter') {
+      const searchTxt = event.target.value as string;
+      const newPage = 0;
+      setSearch(searchTxt);
+      setPage(newPage);
+      Service.getChildPermissionListService(id, {
+        search: searchTxt,
+        page,
+        size: rowsPerPage,
+      }).then((item) => {
         setList(item.data.data.list);
         setTotal(item.data.data.total);
-      })
-      .catch((err) => {
-        setIsNotify(true);
-        setNotifyMessage({
-          text: err.message,
-          type: 'error',
-        });
       });
-  };
-
-  const handleKeyPress = (e: any) => {
-    if (e.key === 'Enter') {
-      executeQuery();
     }
   };
 
@@ -59,25 +51,24 @@ function SuperAdminPermissionPageDetails() {
     event: React.MouseEvent<HTMLButtonElement> | null,
     newPage: number
   ) => {
-    const tempPage = newPage;
-    setPage(tempPage);
-    // // offset? ,limit rowsperpage hoga ofset page * rowsperPage
-    if (search === '' || search === null || search === undefined) {
-      //   Service.getPermissionListService(newPage, rowsPerPage).then((item) => {
-      //     setList(item.data.data.list);
-      //     setTotal(item.data.data.total);
-      //   });
-      // } else {
-      //   Service.getChildSearchPermissionListService(
-      //     id,
-      //     page,
-      //     rowsPerPage,
-      //     search
-      //   ).then((item) => {
-      //     setList(item.data.data.list);
-      //     setTotal(item.data.data.total);
-      //   });
-    }
+    setPage(newPage);
+    Service.getChildPermissionListService(id, {
+      search,
+      page,
+      size: rowsPerPage,
+    })
+      .then((item) => {
+        setList(item.data.data.list);
+        setTotal(item.data.data.total);
+      })
+      .catch((err) => {
+        setIsLoader(false);
+        setIsNotify(true);
+        setNotifyMessage({
+          text: err.message,
+          type: 'error',
+        });
+      });
   };
 
   const handleChangeRowsPerPage = (
@@ -87,22 +78,14 @@ function SuperAdminPermissionPageDetails() {
     const newPage = 0;
     setRowsPerPage(newRowperPage);
     setPage(newPage);
-    if (search === '' || search === null || search === undefined) {
-      //   Service.getPermissionListService(newPage, rowsPerPage).then((item) => {
-      //     setList(item.data.data.list);
-      //     setTotal(item.data.data.total);
-      //   });
-      // } else {
-      //   Service.getChildSearchPermissionListService(
-      //     id,
-      //     page,
-      //     rowsPerPage,
-      //     search
-      //   ).then((item) => {
-      //     setList(item.data.data.list);
-      //     setTotal(item.data.data.total);
-      //   });
-    }
+    Service.getChildPermissionListService(id, {
+      search,
+      page,
+      size: rowsPerPage,
+    }).then((item) => {
+      setList(item.data.data.list);
+      setTotal(item.data.data.total);
+    });
   };
 
   useEffect(() => {
@@ -135,7 +118,6 @@ function SuperAdminPermissionPageDetails() {
   const handleSwitchChange = (event: any, switchid: string) => {
     const data = {
       isActive: event.target.checked,
-      updatedBy: authState.user.id,
     };
     Service.childUpdateStatus(switchid, data).then((updateItem) => {
       if (updateItem.data.success) {
@@ -180,18 +162,20 @@ function SuperAdminPermissionPageDetails() {
                     id="search"
                     type="text"
                     placeholder="Search"
-                    onChange={(event) => handleClickSearch(event)}
-                    onKeyDown={(event) => handleKeyPress(event)}
+                    onKeyDown={(
+                      event: React.KeyboardEvent<
+                        HTMLInputElement | HTMLTextAreaElement
+                      >
+                    ) => {
+                      handleClickSearch(event);
+                    }}
                     endAdornment={
                       <InputAdornment position="end">
                         <Divider
                           sx={{ height: 28, m: 0.5 }}
                           orientation="vertical"
                         />
-                        <IconButton
-                          onClick={executeQuery}
-                          aria-label="toggle password visibility"
-                        >
+                        <IconButton aria-label="toggle password visibility">
                           <SearchIcon className="text-[#6A6A6A]" />
                         </IconButton>
                       </InputAdornment>

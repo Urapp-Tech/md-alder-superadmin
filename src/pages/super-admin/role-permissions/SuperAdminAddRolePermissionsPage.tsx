@@ -44,7 +44,7 @@ function SuperAdminAddRolePermissionsPage() {
       .then((item: any) => {
         if (item.data.success) {
           setIsLoader(false);
-          setList(item.data.data);
+          setList(item.data.data.items);
           // console.log("DAATAssP", item.data.data);
         }
       })
@@ -301,7 +301,7 @@ function SuperAdminAddRolePermissionsPage() {
             </div>
             <div className="mt-5">
               <CustomButton
-                className="bg-black"
+                className="bg-background"
                 buttonType="button"
                 type="submit"
                 title="Submit"

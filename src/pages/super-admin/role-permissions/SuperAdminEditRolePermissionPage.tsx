@@ -47,10 +47,10 @@ function SuperAdminEditRolePermissionsPage() {
     Service.getRolePermissionById(id).then((item: any) => {
       if (item.data.success) {
         setIsLoader(false);
-        setName(item.data.data.name);
-        setDesc(item.data.data.desc);
-        setList(item.data.data.data);
-        const allStatusTrue = item.data.data.data.every((el: any) => {
+        setName(item.data.data.items.name);
+        setDesc(item.data.data.items.desc);
+        setList(item.data.data.items.data);
+        const allStatusTrue = item.data.data.items.data.every((el: any) => {
           return el.data.every((el_status: any) => el_status.status);
         });
         setSelectAll(allStatusTrue);
@@ -302,7 +302,7 @@ function SuperAdminEditRolePermissionsPage() {
             </div>
             <div className="mt-5">
               <CustomButton
-                className="bg-black"
+                className="bg-background"
                 buttonType="button"
                 type="submit"
                 title="update"

@@ -143,7 +143,6 @@ function SuperAdminPermissionPage() {
   const handleSwitchChange = (event: any, id: string) => {
     const data = {
       isActive: event.target.checked,
-      updatedBy: authState.user.id,
     };
     Service.updatePermissionStatus(id, data).then((updateItem) => {
       if (updateItem.data.success) {

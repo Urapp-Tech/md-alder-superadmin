@@ -16,7 +16,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import AddIcon from '@mui/icons-material/Add';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import SendIcon from '@mui/icons-material/Send';
 // import TopBar from '../../components/common/Md-Alder/TopBar';
@@ -25,6 +25,7 @@ import { useNavigate } from 'react-router';
 import SmileFace from '../../../assets/images/smile-dark.png';
 import ChipsInput from '../../../components/common/ChipsInput';
 import service from '../../../services/superadmin/doctor';
+import rolePermissionService from '../../../services/superadmin/RolePermissions';
 // import SmileFace from '../../assets/images/smile-dark.png';
 import DoctorsCreateSchedulePopup from './DoctorsCreateSchedulePopup';
 import TopBar from '../../../components/common/TopBar';
@@ -53,6 +54,8 @@ const DoctorsCreatePage = () => {
   const [image, setImage] = useState<any>(null);
   const [isLoader, setIsLoader] = useState(false);
 
+  const [roleLov, setRoleLov] = useState([]);
+
   const workDays = useAppSelector((state) => state.scheduleState.workDays);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -70,6 +73,21 @@ const DoctorsCreatePage = () => {
   } = useForm<Doctor>();
 
   const methods = useForm();
+
+  useEffect(() => {
+    rolePermissionService
+      .roleLov()
+      .then((item) => {
+        if (item.data.success) {
+          setRoleLov(item.data.data);
+        } else {
+          showMessage(item.data.message, 'error');
+        }
+      })
+      .catch((err) => {
+        showMessage(err.message, 'error');
+      });
+  }, []);
 
   const handleUploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e?.target?.files?.[0];
@@ -118,6 +136,7 @@ const DoctorsCreatePage = () => {
     formData.append('age', data.age);
     formData.append('address', data.address);
     formData.append('designation', data.designation);
+    formData.append('role', data.role);
     formData.append('expertise', data.expertise);
     formData.append('boardCertification', data.boardCertification);
     formData.append('college', data.college);
@@ -390,8 +409,30 @@ const DoctorsCreatePage = () => {
                           </FormControl>
                         </FormGroup>
                       </div>
-                      {/* Address */}
                       <div className="col-span-6 px-2 py-2">
+                        <FormControl
+                          className="FormControl w-full"
+                          variant="standard"
+                        >
+                          <CustomDropDown
+                            validateRequired
+                            id="role"
+                            control={control}
+                            error={errors}
+                            setValue={setValue}
+                            register={register}
+                            options={{
+                              roles: roleLov,
+                            }}
+                            customHeight="h-[40px] rounded-xl alder-form-control"
+                            customClassInputTitle="font-semibold"
+                            // inputTitle=""
+                            defaultValue="Select Role"
+                          />
+                        </FormControl>
+                      </div>
+                      {/* Address */}
+                      <div className="col-span-12 px-2 py-2">
                         <FormGroup>
                           <FormControl
                             className="FormControl"

@@ -501,7 +501,7 @@ function SuperAdminEditPermissionsPage() {
                 buttonType="button"
                 type="submit"
                 title="update"
-                className="bg-[black]"
+                className="bg-background"
               />
             </div>
           </form>
