@@ -169,7 +169,7 @@ function SuperAdminAddPermissionsPage() {
     const duplicateNames: string[] = [];
     const dataKeys = Object.keys(data).filter((key) => key.includes('name'));
 
-    const indexPattern: any = /\d+$/; // Regular expression to match the index at the end of keys
+    const indexPattern: any = /\d+$/;
 
     dataKeys.forEach((nameKey: any) => {
       const index = nameKey.match(indexPattern)[0];

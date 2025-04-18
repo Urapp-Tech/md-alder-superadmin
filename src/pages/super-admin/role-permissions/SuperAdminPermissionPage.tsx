@@ -70,17 +70,17 @@ function SuperAdminPermissionPage() {
     setPage(tempPage);
     // // offset? ,limit rowsperpage hoga ofset page * rowsperPage
     if (search === '' || search === null || search === undefined) {
-      Service.getPermissionListService(newPage, rowsPerPage).then((item) => {
-        setList(item.data.data.list);
-        setTotal(item.data.data.total);
-      });
-    } else {
-      Service.getPermissionSearchService(search, newPage, rowsPerPage).then(
-        (item) => {
-          setList(item.data.data.list);
-          setTotal(item.data.data.total);
-        }
-      );
+      //   Service.getPermissionListService(newPage, rowsPerPage).then((item) => {
+      //     setList(item.data.data.list);
+      //     setTotal(item.data.data.total);
+      //   });
+      // } else {
+      //   Service.getPermissionSearchService(search, newPage, rowsPerPage).then(
+      //     (item) => {
+      //       setList(item.data.data.list);
+      //       setTotal(item.data.data.total);
+      //     }
+      //   );
     }
   };
 
@@ -92,17 +92,17 @@ function SuperAdminPermissionPage() {
     setRowsPerPage(newRowperPage);
     setPage(newPage);
     if (search === '' || search === null || search === undefined) {
-      Service.getPermissionListService(newPage, rowsPerPage).then((item) => {
-        setList(item.data.data.list);
-        setTotal(item.data.data.total);
-      });
-    } else {
-      Service.getPermissionSearchService(search, newPage, rowsPerPage).then(
-        (item) => {
-          setList(item.data.data.list);
-          setTotal(item.data.data.total);
-        }
-      );
+      //   Service.getPermissionListService(newPage, rowsPerPage).then((item) => {
+      //     setList(item.data.data.list);
+      //     setTotal(item.data.data.total);
+      //   });
+      // } else {
+      //   Service.getPermissionSearchService(search, newPage, rowsPerPage).then(
+      //     (item) => {
+      //       setList(item.data.data.list);
+      //       setTotal(item.data.data.total);
+      //     }
+      //   );
     }
   };
 

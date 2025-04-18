@@ -32,7 +32,7 @@ const updateStatus = (id: string, data: any) => {
 };
 
 const createPermissionService = (data: any) => {
-  return network.post(`${PERMISSION_PREFIX}/insert`, data);
+  return network.post(`${PERMISSION_PREFIX}/create`, data);
 };
 
 const updatePermissionService = (id: any, data: any) => {
@@ -59,8 +59,8 @@ const updatePermissionStatus = (id: string, data: any) => {
   return network.post(`${PERMISSION_PREFIX}/update/status/${id}`, data);
 };
 
-const getChildPermissionListService = (id: any, page: number, size: number) => {
-  return network.get(`${PERMISSION_PREFIX}/child/list/${page}/${size}/${id}`);
+const getChildPermissionListService = (id: any, qp: any) => {
+  return network.get(`${PERMISSION_PREFIX}/child/list/${id}`, qp);
 };
 
 const getChildSearchPermissionListService = (

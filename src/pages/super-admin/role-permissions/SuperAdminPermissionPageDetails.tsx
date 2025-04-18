@@ -63,20 +63,20 @@ function SuperAdminPermissionPageDetails() {
     setPage(tempPage);
     // // offset? ,limit rowsperpage hoga ofset page * rowsperPage
     if (search === '' || search === null || search === undefined) {
-      Service.getPermissionListService(newPage, rowsPerPage).then((item) => {
-        setList(item.data.data.list);
-        setTotal(item.data.data.total);
-      });
-    } else {
-      Service.getChildSearchPermissionListService(
-        id,
-        page,
-        rowsPerPage,
-        search
-      ).then((item) => {
-        setList(item.data.data.list);
-        setTotal(item.data.data.total);
-      });
+      //   Service.getPermissionListService(newPage, rowsPerPage).then((item) => {
+      //     setList(item.data.data.list);
+      //     setTotal(item.data.data.total);
+      //   });
+      // } else {
+      //   Service.getChildSearchPermissionListService(
+      //     id,
+      //     page,
+      //     rowsPerPage,
+      //     search
+      //   ).then((item) => {
+      //     setList(item.data.data.list);
+      //     setTotal(item.data.data.total);
+      //   });
     }
   };
 
@@ -88,26 +88,26 @@ function SuperAdminPermissionPageDetails() {
     setRowsPerPage(newRowperPage);
     setPage(newPage);
     if (search === '' || search === null || search === undefined) {
-      Service.getPermissionListService(newPage, rowsPerPage).then((item) => {
-        setList(item.data.data.list);
-        setTotal(item.data.data.total);
-      });
-    } else {
-      Service.getChildSearchPermissionListService(
-        id,
-        page,
-        rowsPerPage,
-        search
-      ).then((item) => {
-        setList(item.data.data.list);
-        setTotal(item.data.data.total);
-      });
+      //   Service.getPermissionListService(newPage, rowsPerPage).then((item) => {
+      //     setList(item.data.data.list);
+      //     setTotal(item.data.data.total);
+      //   });
+      // } else {
+      //   Service.getChildSearchPermissionListService(
+      //     id,
+      //     page,
+      //     rowsPerPage,
+      //     search
+      //   ).then((item) => {
+      //     setList(item.data.data.list);
+      //     setTotal(item.data.data.total);
+      //   });
     }
   };
 
   useEffect(() => {
     setIsLoader(true);
-    Service.getChildPermissionListService(id, page, rowsPerPage)
+    Service.getChildPermissionListService(id, { page, size: rowsPerPage })
       .then((item) => {
         if (item.data.success) {
           setIsLoader(false);
