@@ -155,7 +155,7 @@ function Sidebar() {
         key={path}
         className={({ isActive }) =>
           isActive
-            ? `bg-gray-50 bg-opacity-5 ${padding} ${paddingLeft} w-full pr-4`
+            ? `is-active-img bg-opacity-5 text-gray-200 ${padding} ${paddingLeft} w-full pr-4`
             : `${padding} ${paddingLeft} w-full pr-4`
         }
         to={path}

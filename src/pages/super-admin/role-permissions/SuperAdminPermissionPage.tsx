@@ -117,7 +117,7 @@ function SuperAdminPermissionPage() {
     } else {
       setIsLoader(true);
     }
-    Service.getPermissionListService(page, rowsPerPage)
+    Service.getPermissionListService({ page, size: rowsPerPage })
       .then((item: any) => {
         if (item.data.success) {
           setIsLoader(false);
@@ -209,7 +209,7 @@ function SuperAdminPermissionPage() {
                 </FormControl>
                 <Button
                   variant="contained"
-                  className="btn-black-fill btn-icon flex items-center"
+                  className="btn-black-fill btn-icon flex w-[70%] items-center"
                   onClick={() => navigate('../add-permission')}
                 >
                   <AddOutlinedIcon />{' '}

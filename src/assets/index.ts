@@ -59,6 +59,7 @@ import otpMSg from './images/otp-msg.png';
 import keyIcon from './images/keyIcon.png';
 import superadminLogo from './images/superadmin-logo.png';
 import mdaiderlogo from './images/mdaiderlogo.png';
+import superadminbg from './images/superadmin-bg.jpg';
 
 const assets = {
   images: {
@@ -108,6 +109,7 @@ const assets = {
     keyIcon,
     superadminLogo,
     mdaiderlogo,
+    superadminbg,
   },
   tempImages: {
     wash,

@@ -39,8 +39,8 @@ const updatePermissionService = (id: any, data: any) => {
   return network.post(`${PERMISSION_PREFIX}/update/${id}`, data);
 };
 
-const getPermissionListService = (page: number, size: number) => {
-  return network.get(`${PERMISSION_PREFIX}/list/${page}/${size}`);
+const getPermissionListService = (qp: any) => {
+  return network.get(`${PERMISSION_PREFIX}/list`, qp);
 };
 
 const getPermissionById = (id: any) => {

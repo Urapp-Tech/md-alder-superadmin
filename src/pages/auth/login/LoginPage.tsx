@@ -150,7 +150,7 @@ function LoginPage() {
         <div className="w-[60%] p-3">
           <div className="mx-auto w-[800px] rounded-lg">
             <img
-              src={assets.images.bgLogin}
+              src={assets.images.superadminbg}
               alt="urlaundry"
               className="h-full w-full object-contain"
             />

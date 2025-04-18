@@ -409,7 +409,7 @@ function SuperAdminAddPermissionsPage() {
                 buttonType="button"
                 type="submit"
                 title="add"
-                className="bg-[black]"
+                className="bg-background"
               />
             </div>
           </form>

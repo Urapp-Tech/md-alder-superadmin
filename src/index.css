@@ -1542,6 +1542,10 @@ label + .css-1aa5qj0-MuiInputBase-root-MuiInput-root {
   transition: 0.4s;
 }
 
+.is-active-img img {
+  filter: invert(1);
+}
+
 .left-sidebar {
   @apply bg-background text-foreground !important;
 }
