@@ -68,36 +68,36 @@ networkInstance.interceptors.response.use(
     }
     const originalRequest = { ...error.config };
     if (error.response.status === 401) {
-      return refreshInstance
-        .get(`${BASE_URL}backofficeUser/refresh/token`, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: refreshToken(),
-          },
-        })
-        .then(
-          (response: any) => {
-            if (response.data.success) {
-              setItem('AUTH_TOKEN', response.data.data.accessToken);
-              setItem('REFRESH_TOKEN', response.data.data.refreshToken);
-              const newRequest = {
-                ...originalRequest,
-                headers: {
-                  ...originalRequest.headers,
-                  Authorization: response.data.data.accessToken,
-                  RETRY: 'TRUE',
-                },
-              };
-              return networkInstance(newRequest);
-            }
-            setLogout();
-            return Promise.reject(new Error(response.data.message));
-          },
-          (err) => {
-            setLogout();
-            return Promise.reject(err);
-          }
-        );
+      // return refreshInstance
+      //   .get(`${BASE_URL}backofficeUser/refresh/token`, {
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //       Authorization: refreshToken(),
+      //     },
+      //   })
+      //   .then(
+      //     (response: any) => {
+      //       if (response.data.success) {
+      //         setItem('AUTH_TOKEN', response.data.data.accessToken);
+      //         setItem('REFRESH_TOKEN', response.data.data.refreshToken);
+      //         const newRequest = {
+      //           ...originalRequest,
+      //           headers: {
+      //             ...originalRequest.headers,
+      //             Authorization: response.data.data.accessToken,
+      //             RETRY: 'TRUE',
+      //           },
+      //         };
+      //         return networkInstance(newRequest);
+      //       }
+      //       setLogout();
+      //       return Promise.reject(new Error(response.data.message));
+      //     },
+      //     (err) => {
+      //       setLogout();
+      //       return Promise.reject(err);
+      //     }
+      //   );
     }
     if (error.response.status === 403) {
       setLogout();

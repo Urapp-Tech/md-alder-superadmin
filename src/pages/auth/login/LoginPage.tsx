@@ -58,7 +58,7 @@ function LoginPage() {
       })
       .catch((err) => {
         setIsLoader(false);
-        showNotification(err.message, 'error');
+        showNotification(err.response.data.message, 'error');
       });
   };
 

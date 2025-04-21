@@ -34,7 +34,7 @@ const ChipsInput: React.FC<ExperienceChipsInputProps> = ({
   }, [chips, name, register, setValue]);
 
   const handleChip = () => {
-    if (inputRef.current && chips.length < maxChips) {
+    if (inputRef.current && (chips?.length ?? 0) < maxChips) {
       const newChip = inputRef.current.value;
       if (!_.isEmpty(newChip)) {
         const updated = [...chips, newChip];

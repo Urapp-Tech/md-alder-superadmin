@@ -58,6 +58,8 @@ const DoctorsEditPage = () => {
 
   const workDays = useAppSelector((state) => state.scheduleState.workDays);
 
+  console.log('Update Doctor Details', state);
+
   const {
     register,
     handleSubmit,
@@ -608,7 +610,7 @@ const DoctorsEditPage = () => {
                           name="experience"
                           register={register}
                           setValue={setValue}
-                          defaultChips={state?.experience}
+                          defaultChips={state?.experience || []}
                           maxChips={3}
                         />
                       </div>
@@ -617,7 +619,7 @@ const DoctorsEditPage = () => {
                           name="skills"
                           register={register}
                           setValue={setValue}
-                          defaultChips={state?.skills}
+                          defaultChips={state?.skill || []}
                           maxChips={3}
                         />
                       </div>
@@ -626,7 +628,7 @@ const DoctorsEditPage = () => {
                           name="languages"
                           register={register}
                           setValue={setValue}
-                          defaultChips={state?.languages}
+                          defaultChips={state?.languages || []}
                           maxChips={3}
                         />
                       </div>
@@ -635,7 +637,7 @@ const DoctorsEditPage = () => {
                           name="socialMedia"
                           register={register}
                           setValue={setValue}
-                          defaultChips={state?.socialMedia}
+                          defaultChips={state?.socialMedia || []}
                           maxChips={3}
                         />
                       </div>
