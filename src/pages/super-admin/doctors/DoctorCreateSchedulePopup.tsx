@@ -16,6 +16,7 @@ import { convertDayJSToString } from '../../../utils/helper';
 import OffDaysForm from './OffDaysForm';
 import WorkDaysForm from './WorkDaysForm';
 import { useAppSelector } from '../../../redux/redux-hooks';
+import AllDays from './AllDays';
 
 type SettingsCreateSchedulePopupProps = {
   scheduleAddPopup: boolean;
@@ -110,8 +111,8 @@ const DoctorCreateSchedulePopup = ({
                     iconPosition="bottom"
                     disableRipple
                   />
-                  {/* <Tab disableRipple className="tab-divider" /> */}
-                  {/* <Tab
+                  <Tab disableRipple className="tab-divider" />
+                  <Tab
                     icon={
                       tabPanel === 1 ? (
                         <ExpandMoreOutlinedIcon />
@@ -120,20 +121,20 @@ const DoctorCreateSchedulePopup = ({
                       )
                     }
                     iconPosition="bottom"
-                    label="Event Days"
+                    label="All Days"
                     value={1}
                     disableRipple
-                  /> */}
+                  />
                 </Tabs>
               </div>
               <div className="">
-                {tabPanel === 0 ? <WorkDaysForm /> : <OffDaysForm />}
+                {tabPanel === 0 ? <WorkDaysForm /> : <AllDays />}
               </div>
             </div>
           </div>
         </div>
         <div className="FormFooter">
-          <Button
+          {/* <Button
             className="btn-black-outline"
             onClick={handleFormClose}
             sx={{
@@ -142,7 +143,7 @@ const DoctorCreateSchedulePopup = ({
             }}
           >
             Close
-          </Button>
+          </Button> */}
           {/* <Button
             className="btn-black-fill"
             disabled={ScheduledLoading}

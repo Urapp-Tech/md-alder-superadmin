@@ -191,7 +191,7 @@ const DoctorsEditPage = () => {
         scheduleAddPopup={scheduleAddPopup}
         setScheduleAddPopup={setScheduleAddPopup}
       />
-      <div className="mt-5 h-full pb-5 pr-5">
+      <div className="mt-5 h-full min-h-[999px] pb-5 pr-5">
         <div className="alder-content alder-patient-visit-logs mt-5 h-full p-5">
           <div className="">
             <div className="">

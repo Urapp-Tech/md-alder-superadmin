@@ -61,6 +61,7 @@ export const PATTERN = {
   POINT_NUM: /^[+-]?([0-9]*[.])?[0-9]+$/,
   CHAR_NUM_MINUS_AT_SPACE: /^[a-zA-Z0-9@ -]+$/,
   CHAR_NUM_MIN_AT_HASH_COM_DOT_SPA: /^[a-zA-Z0-9@,\-.# ]+$/,
+  EMAIL: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
 };
 
 export const MAX_LENGTH_EXCEEDED = 'Maximum length exceeded';

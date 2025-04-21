@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 
 export interface WorkDay {
+  length?: number;
   day: string;
   openTime: dayjs.Dayjs | null | undefined;
   closeTime: dayjs.Dayjs | null | undefined;

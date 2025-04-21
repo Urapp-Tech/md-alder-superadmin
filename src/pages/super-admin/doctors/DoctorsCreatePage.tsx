@@ -198,7 +198,7 @@ const DoctorsCreatePage = () => {
         scheduleAddPopup={scheduleAddPopup}
         setScheduleAddPopup={setScheduleAddPopup}
       />
-      <div className="mt-5 h-full pb-5 pr-5">
+      <div className="mt-5 h-full min-h-[999px] pb-5 pr-5">
         <div className="alder-content alder-patient-visit-logs mt-5 h-full p-5">
           <div className="">
             <div className="">
@@ -326,8 +326,7 @@ const DoctorsCreatePage = () => {
                             variant="standard"
                           >
                             <CustomInputBox
-                              requiredType
-                              pattern={PATTERN.CHAR_NUM_DOT_AT}
+                              pattern={PATTERN.EMAIL}
                               placeholder="johnsmith@gmail.com"
                               id="email"
                               customFontClass="font-semibold mb-1"
@@ -401,7 +400,6 @@ const DoctorsCreatePage = () => {
                               customFontClass="font-semibold mb-1"
                               customClass="alder-form-control"
                               register={register}
-                              requiredType
                               error={errors.age}
                               inputType="number"
                               typeImportant

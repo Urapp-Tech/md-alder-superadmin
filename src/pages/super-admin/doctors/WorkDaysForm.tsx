@@ -14,6 +14,7 @@ import TimePicker from '../../../components/common/TimePicker';
 import { WorkDay } from '../../../interfaces/superadmin/shop-schedule.interface';
 import { setWordDays } from '../../../redux/features/shopScheduleStateSlice';
 import { useAppDispatch, useAppSelector } from '../../../redux/redux-hooks';
+import { useSnackbar } from '../../../components/hooks/useSnackbar';
 
 dayjs.extend(isBetween);
 
@@ -38,6 +39,7 @@ function WorkDaysForm({
   //   _breakOffTime,
   //   //  setBreakOffTime
   // ] = useState<dayjs.Dayjs | null>(null);
+  const { showMessage } = useSnackbar();
   const [currentDay, setCurrentDay] = useState<string>('Sunday');
   const dispatch = useAppDispatch();
   const workDays = useAppSelector((state) => state.scheduleState.workDays);
@@ -97,7 +99,8 @@ function WorkDaysForm({
    * @param {any} data - The form data containing shop open time, shop close time, break time, and break off time.
    * @returns {void}
    */
-  const onSubmit = (data: any) => {
+  // eslint-disable-next-line consistent-return
+  const onSubmit = (data: any): void => {
     const index = workDays.findIndex((x) => x.day === currentDay);
     const newWorkDay: WorkDay = {
       day: currentDay,
@@ -108,6 +111,10 @@ function WorkDaysForm({
       // breakTime: data.breakTime,
       // breakOffTime: data.breakOffTime,
     };
+
+    if (newWorkDay.openTime === null || newWorkDay.closeTime === null) {
+      return showMessage('Please enter timings', 'error');
+    }
 
     if (index === -1) {
       setWorkDaysState([...workDays, newWorkDay]);

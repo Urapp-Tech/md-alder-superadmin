@@ -85,20 +85,6 @@ function DoctorPage() {
       setList(item.data.data.list);
       setTotal(item.data.data.total);
     });
-    // if (search === '' || search === null || search === undefined) {
-
-    // }
-    // else {
-    //     Service.getListServiceSearch(
-    //         authState.user.tenant,
-    //         search,
-    //         newPage,
-    //         rowsPerPage
-    //     ).then((item) => {
-    //         setList(item.data.data.list);
-    //         setTotal(item.data.data.total);
-    //     });
-    // }
   };
 
   useEffect(() => {
