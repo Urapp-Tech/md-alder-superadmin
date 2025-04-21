@@ -43,6 +43,7 @@ import CustomInputBox from '../../../components/common/CustomInputBox';
 import DoctorCreateSchedulePopup from './DoctorCreateSchedulePopup';
 import { useAppDispatch, useAppSelector } from '../../../redux/redux-hooks';
 import { setWordDays } from '../../../redux/features/shopScheduleStateSlice';
+import rolePermissionService from '../../../services/superadmin/RolePermissions';
 
 const DoctorsEditPage = () => {
   const docId = useParams();
@@ -55,6 +56,8 @@ const DoctorsEditPage = () => {
   );
   const [image, setImage] = useState<any>(null);
   const [isLoader, setIsLoader] = useState(false);
+
+  const [roleLov, setRoleLov] = useState([]);
 
   const workDays = useAppSelector((state) => state.scheduleState.workDays);
 
@@ -107,6 +110,21 @@ const DoctorsEditPage = () => {
   };
 
   useEffect(() => {
+    rolePermissionService
+      .roleLov()
+      .then((item) => {
+        if (item.data.success) {
+          setRoleLov(item.data.data);
+        } else {
+          showMessage(item.data.message, 'error');
+        }
+      })
+      .catch((err) => {
+        showMessage(err.message, 'error');
+      });
+  }, []);
+
+  useEffect(() => {
     if (state?.addDateTime?.length) {
       const formattedSchedule = state?.addDateTime?.map((item: any) => ({
         day: item.day,
@@ -129,6 +147,7 @@ const DoctorsEditPage = () => {
     formData.append('phone', data.phone);
     formData.append('email', data.email);
     // formData.append('password', data.password);
+    formData.append('role', data.role);
     formData.append('age', data.age);
     formData.append('address', data.address);
     formData.append('designation', data.designation);
@@ -409,6 +428,28 @@ const DoctorsEditPage = () => {
                             />
                           </FormControl>
                         </FormGroup>
+                      </div>
+                      <div className="col-span-6 px-2 py-2">
+                        <FormControl
+                          className="FormControl w-full"
+                          variant="standard"
+                        >
+                          <CustomDropDown
+                            validateRequired
+                            id="role"
+                            control={control}
+                            error={errors}
+                            setValue={setValue}
+                            register={register}
+                            options={{
+                              roles: roleLov,
+                            }}
+                            customHeight="h-[40px] rounded-xl alder-form-control"
+                            customClassInputTitle="font-semibold"
+                            // inputTitle=""
+                            defaultValue="Select Role"
+                          />
+                        </FormControl>
                       </div>
                       {/* Address */}
                       <div className="col-span-6 px-2 py-2">
