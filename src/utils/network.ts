@@ -68,6 +68,7 @@ networkInstance.interceptors.response.use(
     }
     const originalRequest = { ...error.config };
     if (error.response.status === 401) {
+      setLogout();
       // return refreshInstance
       //   .get(`${BASE_URL}backofficeUser/refresh/token`, {
       //     headers: {
