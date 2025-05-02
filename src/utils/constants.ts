@@ -64,7 +64,8 @@ export const PATTERN = {
   EMAIL: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
 };
 
-export const MAX_LENGTH_EXCEEDED = 'Maximum length exceeded';
+export const MAX_LENGTH_EXCEEDED = 'Maximum length 8 exceeded';
+export const MIN_LENGTH_EXCEEDED = 'Maximum length 8 characters';
 export const INVALID_CHAR = 'Invalid characters';
 export const PH_MINI_LENGTH = 'Minimum length should be 15';
 

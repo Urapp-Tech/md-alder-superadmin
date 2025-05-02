@@ -33,6 +33,7 @@ import {
   imageAllowedTypes,
   INVALID_CHAR,
   MAX_LENGTH_EXCEEDED,
+  MIN_LENGTH_EXCEEDED,
   PATTERN,
 } from '../../../utils/constants';
 import { useSnackbar } from '../../../components/hooks/useSnackbar';
@@ -185,6 +186,8 @@ const DoctorsCreatePage = () => {
         showMessage(err.message, 'error');
       });
   };
+
+  console.log('maxLength', errors);
 
   return (
     <>
@@ -352,7 +355,10 @@ const DoctorsCreatePage = () => {
                             {...register('password', {
                               required: 'Password is required',
                               pattern: PATTERN.PASSWORD,
-                              validate: (value) => value.length <= 8,
+                              minLength: {
+                                value: 8,
+                                message: MIN_LENGTH_EXCEEDED,
+                              },
                             })}
                             endAdornment={
                               <InputAdornment position="end">
@@ -378,8 +384,8 @@ const DoctorsCreatePage = () => {
                           {errors.password?.type === 'pattern' && (
                             <ErrorSpanBox error={INVALID_CHAR} />
                           )}
-                          {errors.password?.type === 'validate' && (
-                            <ErrorSpanBox error={MAX_LENGTH_EXCEEDED} />
+                          {errors.password?.type === 'minLength' && (
+                            <ErrorSpanBox error={MIN_LENGTH_EXCEEDED} />
                           )}
                         </FormControl>
                       </div>
